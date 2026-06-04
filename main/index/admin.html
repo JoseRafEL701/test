@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-bold">Panel Administrador</h1>
+            <button id="logoutBtn" class="bg-red-500 text-white px-4 py-1 rounded">Cerrar Sesión</button>
+        </div>
+    </nav>
+
+    <div class="container mx-auto px-4 py-8">
+        <button id="createUserBtn" class="bg-green-500 text-white px-4 py-2 rounded mb-4">+ Nuevo Usuario</button>
+        
+        <div class="bg-white rounded-lg shadow overflow-hidden">
+            <table class="w-full">
+                <thead class="bg-gray-200">
+                    <tr>
+                        <th class="px-4 py-2 text-left">ID</th>
+                        <th class="px-4 py-2 text-left">Nombre</th>
+                        <th class="px-4 py-2 text-left">Email</th>
+                        <th class="px-4 py-2 text-left">Rol</th>
+                        <th class="px-4 py-2 text-left">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                    <tr>
+                        <td colspan="5" class="text-center py-4">Cargando...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="userModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center">
+        <div class="bg-white rounded-lg p-6 w-96">
+            <h2 id="modalTitle" class="text-xl font-bold mb-4">Crear Usuario</h2>
+            <form id="userForm">
+                <input type="hidden" id="userId">
+                <div class="mb-3">
+                    <label class="block text-gray-700">Nombre</label>
+                    <input type="text" id="userName" required class="w-full px-3 py-2 border rounded">
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700">Email</label>
+                    <input type="email" id="userEmail" required class="w-full px-3 py-2 border rounded">
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700">Contraseña</label>
+                    <input type="password" id="userPassword" class="w-full px-3 py-2 border rounded">
+                </div>
+                <div class="mb-3">
+                    <label class="block text-gray-700">Rol</label>
+                    <select id="userRole" class="w-full px-3 py-2 border rounded">
+                        <option value="user">Usuario</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                </div>
+                <div class="flex gap-2">
+                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">Guardar</button>
+                    <button type="button" id="closeModalBtn" class="bg-gray-500 text-white px-4 py-2 rounded">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="module" src="src/js/admin.js"></script>
+</body>
+</html>
